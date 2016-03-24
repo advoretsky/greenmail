@@ -58,7 +58,8 @@ public class GreenMailStandaloneRunner {
                 {"-Dgreenmail.<protocol|all>.port=...", "Specifies port. Requires additional hostname parameter."},
                 {"-Dgreenmail.users=<logon:pwd@domain>[,...]", "Specifies mail users, eg foo:pwd@bar.com,foo2:pwd@bar2.com."},
                 {"Note: domain must be DNS resolvable!"},
-                {"-Dgreenmail.auth.disabled ","Disables authentication check so that any password works."},
+                {"-Dgreenmail.auth.disabled","Disables authentication check so that any password works."},
+                {"-Dsink.mailbox","Uses given mailbox for all incoming letters."},
                 {"Also automatically provisions previously non-existent users."},
         };
         for (String[] opt : options) {

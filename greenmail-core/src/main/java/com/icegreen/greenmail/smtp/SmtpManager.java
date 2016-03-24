@@ -116,6 +116,8 @@ public class SmtpManager {
     }
 
     private class Incoming {
+        private static final String SINK_MAILBOX = "sink.mailbox";
+
         public void enqueue(MovingMessage msg) {
             for (MailAddress address : msg.getToAddresses()) {
                 handle(msg, address);
@@ -125,11 +127,12 @@ public class SmtpManager {
 
         private void handle(MovingMessage msg, MailAddress mailAddress) {
             try {
-                GreenMailUser user = userManager.getUserByEmail(mailAddress.getEmail());
+                String recepientEmail = getMailboxEmail(mailAddress);
+                GreenMailUser user = userManager.getUserByEmail(recepientEmail);
                 if (null == user) {
-                    String login = mailAddress.getEmail();
-                    String email = mailAddress.getEmail();
-                    String password = mailAddress.getEmail();
+                    String login = recepientEmail;
+                    String email = recepientEmail;
+                    String password = recepientEmail;
                     user = userManager.createUser(email, login, password);
                     log.info("Created user login {} for address {} with password {} because it didn't exist before.", login, email, password);
                 }
@@ -141,6 +144,11 @@ public class SmtpManager {
             }
 
             msg.releaseContent();
+        }
+
+        private String getMailboxEmail(MailAddress mailAddress) {
+            String sinkMailbox = System.getProperty(SINK_MAILBOX);
+            return sinkMailbox == null ? mailAddress.getEmail() : sinkMailbox;
         }
     }
 }
