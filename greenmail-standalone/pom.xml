@@ -49,6 +49,7 @@
   </dependencies>
 
   <build>
+    <finalName>greenmail-standalone</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -70,6 +71,88 @@
         </executions>
       </plugin>
     </plugins>
+
   </build>
+
+    <profiles>
+
+      <profile>
+        <id>docker</id>
+        <build>
+          <plugins>
+            <plugin>
+              <groupId>io.fabric8</groupId>
+              <artifactId>docker-maven-plugin</artifactId>
+              <version>0.14.2</version>
+              <configuration>
+                <autoPull>true</autoPull>
+                <images>
+                  <image>
+                    <name>greenmail:${project.version}</name>
+                    <build>
+                      <from>java:8</from>
+                      <maintainer>advoretsky@gmail.com</maintainer>
+                      <tags>
+                        <tag>latest</tag>
+                        <tag>${project.version}</tag>
+                      </tags>
+                      <ports>
+                        <port>3025</port>
+                        <port>3465</port>
+                        <port>3110</port>
+                        <port>3995</port>
+                        <port>3143</port>
+                        <port>3993</port>
+                      </ports>
+
+                      <runCmds>
+                         <run>addgroup greenmail &amp;&amp; useradd -g  greenmail -m  greenmail</run>
+                      </runCmds>
+
+                      <assembly>
+                        <basedir>/home/greenmail</basedir>
+                        <descriptorRef>artifact</descriptorRef>
+                      </assembly>
+
+                      <workdir>/home/greenmail</workdir>
+
+                      <entryPoint>
+                        <exec>
+                          <arg>java</arg>
+                          <arg>-Djava.net.preferIPv4Stack=true</arg>
+                          <arg>-Dgreenmail.setup.test.all</arg>
+                          <arg>-Dgreenmail.hostname=0.0.0.0</arg>
+                          <arg>-Dgreenmail.auth.disabled</arg>
+                          <arg>-jar</arg>
+                          <arg>greenmail-standalone.jar</arg>
+                        </exec>
+                      </entryPoint>
+
+                    </build>
+                  </image>
+                </images>
+              </configuration>
+              <executions>
+                <execution>
+                  <id>docker-package</id>
+                  <phase>pre-integration-test</phase>
+                  <goals>
+                    <goal>build</goal>
+                  </goals>
+                </execution>
+                <execution>
+                  <id>docker-deploy</id>
+                  <phase>deploy</phase>
+                  <goals>
+                    <goal>push</goal>
+                  </goals>
+                </execution>
+              </executions>
+            </plugin>
+          </plugins>
+        </build>
+      </profile>
+
+  </profiles>
 
 </project>
