@@ -27,10 +27,10 @@
 
   <scm>
     <connection>
-      scm:git:https://github.com/greenmail-mail-test/greenmail.git
+      scm:git:https://github.com/advoretsky/greenmail.git
     </connection>
     <developerConnection>
-      scm:git:git@github.com:greenmail-mail-test/greenmail.git
+      scm:git:https://github.com/advoretsky/greenmail.git
     </developerConnection>
     <url>
       https://github.com/greenmail-mail-test/greenmail
