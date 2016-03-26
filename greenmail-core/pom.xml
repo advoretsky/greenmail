@@ -8,7 +8,6 @@
 
   <artifactId>greenmail</artifactId>
   <packaging>jar</packaging>
-  <version>1.5.1-SNAPSHOT</version>
 
   <parent>
     <groupId>com.icegreen</groupId>
