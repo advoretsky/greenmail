@@ -9,7 +9,7 @@
   <parent>
     <groupId>com.icegreen</groupId>
     <artifactId>greenmail-parent</artifactId>
-    <version>1.5.1-SNAPSHOT</version>
+    <version>1.5.0-odoro</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 

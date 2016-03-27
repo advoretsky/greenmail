@@ -11,7 +11,7 @@
   <artifactId>greenmail-parent</artifactId>
   <packaging>pom</packaging>
   <!-- This version should get inherited to all subprojects. -->
-  <version>1.5.1-SNAPSHOT</version>
+  <version>1.5.0-odoro</version>
 
   <prerequisites>
     <maven>3.2.1</maven>
@@ -270,12 +270,12 @@
       <dependency>
         <groupId>com.icegreen</groupId>
         <artifactId>greenmail</artifactId>
-        <version>1.5.1-SNAPSHOT</version>
+        <version>1.5.0-odoro</version>
       </dependency>
       <dependency>
         <groupId>com.icegreen</groupId>
         <artifactId>greenmail-standalone</artifactId>
-        <version>1.5.1-SNAPSHOT</version>
+        <version>1.5.0-odoro</version>
       </dependency>
       <dependency>
         <groupId>com.icegreen</groupId>
