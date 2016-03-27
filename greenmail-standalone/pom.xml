@@ -122,6 +122,7 @@
                           <arg>-Dgreenmail.setup.test.all</arg>
                           <arg>-Dgreenmail.hostname=0.0.0.0</arg>
                           <arg>-Dgreenmail.auth.disabled</arg>
+                          <arg>-Dgreenmail.users=sink:sink@example.com</arg>
                           <arg>-jar</arg>
                           <arg>greenmail-standalone.jar</arg>
                         </exec>
