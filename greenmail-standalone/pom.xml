@@ -89,6 +89,7 @@
                   <image>
                     <name>greenmail:${project.version}</name>
                     <build>
+                      <cleanup>try</cleanup>
                       <from>java:8</from>
                       <maintainer>advoretsky@gmail.com</maintainer>
                       <tags>
