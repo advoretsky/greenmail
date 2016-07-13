@@ -2,6 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.icegreen</groupId>
   <artifactId>greenmail-standalone</artifactId>
+  <version>1.5.0-odoro1</version>
   <packaging>jar</packaging>
   <name>== Greenmail Standalone ==</name>
   <description>Run GreenMail standalone</description>
@@ -82,7 +83,7 @@
             <plugin>
               <groupId>io.fabric8</groupId>
               <artifactId>docker-maven-plugin</artifactId>
-              <version>0.14.2</version>
+              <version>0.15.9</version>
               <configuration>
                 <autoPull>true</autoPull>
                 <images>
